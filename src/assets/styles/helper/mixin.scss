@@ -1,0 +1,44 @@
+@mixin styleText($color, $fs, $fw) {
+  color: $color;
+  font-size: $fs;
+  font-weight: $fw;
+}
+
+@mixin styleHover($bg-color, $boder-color, $color) {
+  background-color: $bg-color;
+  border: 1px solid $boder-color;
+  color: $color;
+}
+
+@mixin styleButton(
+  $bg-color,
+  $border-color,
+  $pd-top-bottom,
+  $pd-left-right,
+  $bd-rad
+) {
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+  padding: $pd-top-bottom $pd-left-right;
+  border-radius: $bd-rad;
+}
+
+@mixin styleBeforeAfter(
+  $position,
+  $content,
+  $width,
+  $height,
+  $top,
+  $right,
+  $bottom,
+  $left
+) {
+  position: $position;
+  content: $content;
+  width: $width;
+  height: $height;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

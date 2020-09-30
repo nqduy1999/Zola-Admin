@@ -1,0 +1,34 @@
+.pageNotFound {
+  margin-top: $margin-1;
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+    @include styleText($color-white-0, $fontSize-1, $default-fontWeight);
+    @include styleButton(
+      $color-purple-0,
+      $color-purple-0,
+      $padding-1,
+      $padding-3,
+      $bdRad-0
+    );
+    &:hover {
+      @include styleText($color-purple-0, $fontSize-1, $default-fontWeight);
+
+      @include styleButton(
+        transparent,
+        $color-purple-0,
+        $padding-1,
+        $padding-3,
+        $bdRad-2
+      );
+      transition: all 0.5s;
+    }
+  }
+}

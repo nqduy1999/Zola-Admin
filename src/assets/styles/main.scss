@@ -1,0 +1,10 @@
+//Helper apply here
+@import './helper/variable.scss';
+@import './helper/mixin.scss';
+
+//Base apply here
+@import './base/reset.scss';
+@import './base/customze.scss';
+
+//PageNotFound
+@import '../../pages/PageNorFound/index.scss';
