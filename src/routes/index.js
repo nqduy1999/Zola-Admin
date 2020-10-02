@@ -1,13 +1,13 @@
 import React from 'react';
 
-import LoginPage from '../pages/LoginPage';
+import SignInPage from '../pages/SignInPage';
 import PageNotFound from '../pages/PageNorFound';
 
 export const routes = [
   {
     path: '/',
     exact: true,
-    main: () => <LoginPage />
+    main: () => <SignInPage />
   },
 
   {

@@ -6,5 +6,9 @@
 @import './base/reset.scss';
 @import './base/customze.scss';
 
+//Page
+//Login Component
+@import '../../components/SignInComponent/index.scss';
+
 //PageNotFound
 @import '../../pages/PageNorFound/index.scss';
