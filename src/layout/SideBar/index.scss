@@ -1,0 +1,25 @@
+.sidebar {
+  background-color: #001529;
+  &__img {
+    @include styleCenterItem;
+    img {
+      width: 100px;
+    }
+  }
+  .nav-item {
+    padding: 15px;
+    text-align: center;
+    a {
+      color: white;
+      display: block;
+      width: 100%;
+      padding: 10px;
+      span {
+        margin: 5px;
+      }
+      &.active {
+        background-color: #1890ff;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.signIn {
+  background-image: url('../../assets/images/tong-hop-hinh-nen-background-vector-designer-dep-do-phan-giai-fhd-2k-4k-moi-nhat-4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 720px;
+  @include styleCenterItem;
+  &__form {
+    @include styleCenTerMargin(70%);
+    box-shadow: 5px 4px 20px 0px $color-white-0;
+    &__left {
+      width: 100%;
+      height: 400px;
+      display: block;
+      background-image: url('../../assets/images/img.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      img {
+        @include styleImage(20%, auto);
+        @include stylePositionAbsolute(auto, auto, 5px, 5px);
+        background-color: black;
+        display: block;
+      }
+    }
+    &__right {
+      position: relative;
+      img {
+        @include styleImage(20%, 20%);
+        @include stylePositionAbsolute(25px, auto, auto, 50%);
+      }
+      &__content {
+        @include styleCenTerMargin(80%);
+        @include styleCenterItem;
+        height: 100%;
+        form {
+          width: 100%;
+          label {
+            @include styleText(
+              $color-white-0,
+              $default-fontsize,
+              $default-fontWeight
+            );
+          }
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

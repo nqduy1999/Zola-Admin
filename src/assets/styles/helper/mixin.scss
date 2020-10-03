@@ -42,3 +42,27 @@
   bottom: $bottom;
   left: $left;
 }
+
+@mixin styleCenTerMargin($width) {
+  margin: 0 auto;
+  width: $width;
+}
+
+@mixin styleCenterItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin styleImage($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin stylePositionAbsolute($top, $right, $bottom, $lelft) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $lelft;
+}
