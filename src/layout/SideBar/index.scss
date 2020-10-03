@@ -1,0 +1,9 @@
+.sidebar {
+  background-color: #001529;
+  &__img {
+    @include styleCenterItem;
+    img {
+      width: 100px;
+    }
+  }
+}

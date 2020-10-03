@@ -6,6 +6,12 @@
 @import './base/reset.scss';
 @import './base/customze.scss';
 
+//layout
+
+@import '../../layout/Header/index.scss';
+@import '../../layout/SideBar/index.scss';
+@import '../../layout/index.scss';
+
 //Page
 //Login Component
 @import '../../components/SignInComponent/index.scss';
