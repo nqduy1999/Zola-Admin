@@ -18,5 +18,10 @@
     &__right {
       @include styleCenterItem;
     }
+    &__content {
+      margin: 1.5em;
+      background-color: white;
+      border-radius: 5px;
+    }
   }
 }

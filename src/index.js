@@ -9,15 +9,12 @@ import 'antd/dist/antd.css';
 //redux
 import configStore from './store/configStore';
 import { Provider } from 'react-redux';
-import Layout from './layout';
 
 const store = configStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Layout>
-      <App />
-    </Layout>
+    <App />
   </Provider>,
   document.getElementById('root')
 );

@@ -3,7 +3,8 @@ import React from 'react';
 import SignInPage from '../pages/SignInPage';
 import PageNotFound from '../pages/PageNorFound';
 import AdminPage from '../pages/AdminPage';
-
+import Layout from '../layout';
+import UsersPage from '../pages/UsersPage';
 export const routes = [
   {
     path: '/',
@@ -13,8 +14,21 @@ export const routes = [
 
   {
     path: '/admin',
+    exact: true,
+    main: () => (
+      <Layout>
+        <AdminPage />
+      </Layout>
+    )
+  },
+  {
+    path: '/admin/users',
     exact: false,
-    main: () => <AdminPage />
+    main: () => (
+      <Layout>
+        <UsersPage />
+      </Layout>
+    )
   },
 
   {

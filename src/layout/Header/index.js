@@ -28,8 +28,8 @@ const Header = props => {
             />
           </Col>
         </Row>
+        <section className={c`content`}>{props.children}</section>
       </section>
-      <section className={c`content`}>{props.children}</section>
     </>
   );
 };
