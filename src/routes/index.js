@@ -5,6 +5,7 @@ import PageNotFound from '../pages/PageNorFound';
 import AdminPage from '../pages/AdminPage';
 import Layout from '../layout';
 import UsersPage from '../pages/UsersPage';
+import AddUserPage from '../pages/AddUserPage';
 export const routes = [
   {
     path: '/',
@@ -21,6 +22,7 @@ export const routes = [
       </Layout>
     )
   },
+
   {
     path: '/admin/users',
     exact: false,
@@ -30,7 +32,15 @@ export const routes = [
       </Layout>
     )
   },
-
+  {
+    path: '/admin/addUser',
+    exact: false,
+    main: () => (
+      <Layout>
+        <AddUserPage />
+      </Layout>
+    )
+  },
   {
     path: '',
     exact: false,

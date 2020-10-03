@@ -6,4 +6,20 @@
       width: 100px;
     }
   }
+  .nav-item {
+    padding: 15px;
+    text-align: center;
+    a {
+      color: white;
+      display: block;
+      width: 100%;
+      padding: 15px;
+      span {
+        margin: 5px;
+      }
+      &.active {
+        background-color: #1890ff;
+      }
+    }
+  }
 }
