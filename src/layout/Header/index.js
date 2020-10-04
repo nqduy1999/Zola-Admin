@@ -1,12 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { classPrefixor } from '../../utils/classPrefixor';
-import { Row, Col, Input, Avatar } from 'antd';
-import { SearchOutlined, BellOutlined, UserOutlined } from '@ant-design/icons';
+import { Row, Col, Input, Avatar, Dropdown, Menu } from 'antd';
+import { SearchOutlined, BellOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signOutAction } from '../../redux/actions/Account.action';
 
 const prefix = 'header';
 const c = classPrefixor(prefix);
 const Header = props => {
+  const { role } = useSelector(state => state.AccountReducer);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    history.push('/');
+    localStorage.clear();
+    dispatch(signOutAction());
+  };
+  const menu = (
+    <Menu>
+      <Menu.Item key="0" onClick={() => handleLogout()}>
+        Log out
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <>
       <section className="right">
@@ -22,10 +42,20 @@ const Header = props => {
             <BellOutlined
               style={{ fontSize: '20px', color: '#08c', marginRight: '20px' }}
             />
-            <Avatar
-              style={{ fontSize: '24px', cursor: 'pointer' }}
-              icon={<UserOutlined />}
-            />
+            <Dropdown overlay={menu} trigger={['click']}>
+              <a
+                className="ant-dropdown-link"
+                onClick={e => e.preventDefault()}
+              >
+                <Avatar
+                  style={{ cursor: 'pointer', backgroundColor: '#f56a00' }}
+                  size="large"
+                >
+                  {role}
+                </Avatar>
+              </a>
+            </Dropdown>
+            ,
           </Col>
         </Row>
         <section className={c`content`}>{props.children}</section>

@@ -3,15 +3,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 720px;
+  height: 100vh;
   @include styleCenterItem;
   &__form {
     @include styleCenTerMargin(70%);
     box-shadow: 5px 4px 20px 0px $color-white-0;
+    height: auto;
     &__left {
       width: 100%;
-      height: 400px;
-      display: block;
+      height: auto;
       background-image: url('../../assets/images/img.jpg');
       background-repeat: no-repeat;
       background-size: cover;
@@ -24,17 +24,11 @@
       }
     }
     &__right {
-      position: relative;
-      img {
-        @include styleImage(20%, 20%);
-        @include stylePositionAbsolute(25px, auto, auto, 50%);
-      }
       &__content {
         @include styleCenTerMargin(80%);
-        @include styleCenterItem;
-        height: 100%;
         form {
           width: 100%;
+          margin-top: 20px;
           label {
             @include styleText(
               $color-white-0,
@@ -44,6 +38,19 @@
           }
           button {
             width: 100%;
+          }
+        }
+        p {
+          text-align: center;
+          color: red;
+          margin-left: 20%;
+        }
+        .img {
+          @include styleCenterItem;
+          padding: 15px 0 0;
+          margin-left: 8%;
+          img {
+            width: 30%;
           }
         }
       }
