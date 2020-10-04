@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './assets/styles/main.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { routes } from './routes';
-import { setAuthorization } from './utils/axios';
 import { useDispatch } from 'react-redux';
 import { CREDENTIAL_TYPE } from './redux/constants/Account.constant';
 
@@ -12,7 +11,6 @@ const App = () => {
   useEffect(() => {
     const credential = JSON.parse(localStorage.getItem('credential'));
     if (credential) {
-      setAuthorization(credential.accessToken);
       dispatch({
         type: CREDENTIAL_TYPE.SIGNIN_SUCCESS,
         payload: credential

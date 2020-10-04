@@ -1,5 +1,4 @@
 import { accountService } from '../../services';
-import { setAuthorization } from '../../utils/axios';
 import { CREDENTIAL_TYPE } from '../constants/Account.constant';
 
 export const signInAction = (data, loginSuccess) => async dispatch => {
@@ -13,7 +12,6 @@ export const signInAction = (data, loginSuccess) => async dispatch => {
       const { error, data } = res.data;
       if (!error) {
         if (data.role === 'ADMIN') {
-          setAuthorization(data.accessToken);
           localStorage.setItem('credential', JSON.stringify(data));
           dispatch({
             type: CREDENTIAL_TYPE.SIGNIN_SUCCESS,
