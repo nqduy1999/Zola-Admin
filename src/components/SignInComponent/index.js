@@ -31,7 +31,7 @@ const SignInComponent = () => {
   const handleLoginSuccess = () => {
     const credential = JSON.parse(localStorage.getItem('credential'));
     if (credential?.role === 'ADMIN') {
-      history.push('/admin');
+      history.push('/admin/users');
       toast.success('🦄 HELLO ADMIN', {
         position: 'top-right',
         autoClose: 2000,

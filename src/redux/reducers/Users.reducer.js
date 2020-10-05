@@ -12,8 +12,7 @@ const UsersReducer = (state = initialState, action) => {
       return { ...state, err: null, loading: true };
     }
     case USERS_TYPE.FETCH_LIST_SUCCESS: {
-      console.log(action.payload);
-      return { ...state, loading: false };
+      return { ...state, loading: false, users: action.payload };
     }
 
     default:

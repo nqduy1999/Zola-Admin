@@ -1,0 +1,26 @@
+.users {
+  text-align: center;
+  &__header {
+    padding: 5px 10px;
+    border-bottom: black 1px solid;
+    margin-bottom: 15px;
+    &__text {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    button {
+      display: inline;
+      margin: 5px;
+    }
+  }
+  .icon {
+    margin: 5px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .detail:hover {
+    color: blue;
+    transition: all 0.5s;
+  }
+}

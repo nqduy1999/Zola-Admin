@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { classPrefixor } from '../../utils/classPrefixor';
 import { Menu } from 'antd';
-import {
-  UsergroupAddOutlined,
-  UserOutlined,
-  UserSwitchOutlined
-} from '@ant-design/icons';
+import { UserOutlined, UserSwitchOutlined } from '@ant-design/icons';
 import logo from '../../assets/images/logo.png';
 import { NavLink } from 'react-router-dom';
 
@@ -31,12 +27,6 @@ const SideBar = () => {
             <NavLink to="/admin/users">
               <UserSwitchOutlined />
               <span>User List</span>
-            </NavLink>
-          </div>
-          <div className="nav-item">
-            <NavLink to="/admin/addUser">
-              <UsergroupAddOutlined />
-              <span>Add User</span>
             </NavLink>
           </div>
         </SubMenu>
