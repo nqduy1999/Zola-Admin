@@ -1,10 +1,25 @@
 import axios from 'axios';
 const instance = axios.create({
-  // baseURL: ''
+  baseURL: 'https://api-chat.ga/api/v0'
 });
 
-export const setAuthorization = token => {
-  //Khi chạy này 1 lần tất cả token sẽ gắn vào header
-  return (instance.defaults.headers.common.Authorization = `Bearer ${token}`);
-};
+instance.interceptors.request.use(
+  config => {
+    const token = JSON.parse(localStorage.getItem('credential'));
+    if (token) {
+      config.headers['x-access-token'] = token.accessToken;
+    }
+    return config;
+  },
+  error => {
+    Promise.reject(error);
+  }
+);
+
+instance.interceptors.response.use(
+  res => res,
+  err => {
+    return Promise.reject(err);
+  }
+);
 export default instance;

@@ -6,6 +6,7 @@ import AdminPage from '../pages/AdminPage';
 import Layout from '../layout';
 import UsersPage from '../pages/UsersPage';
 import AddUserPage from '../pages/AddUserPage';
+import AdminAuth from '../components/common/HOC/Auth/AdminAuth';
 export const routes = [
   {
     path: '/',
@@ -18,7 +19,7 @@ export const routes = [
     exact: true,
     main: () => (
       <Layout>
-        <AdminPage />
+        <AdminAuth component={AdminPage}></AdminAuth>
       </Layout>
     )
   },
@@ -28,7 +29,7 @@ export const routes = [
     exact: false,
     main: () => (
       <Layout>
-        <UsersPage />
+        <AdminAuth component={UsersPage}></AdminAuth>
       </Layout>
     )
   },
@@ -37,7 +38,7 @@ export const routes = [
     exact: false,
     main: () => (
       <Layout>
-        <AddUserPage />
+        <AdminAuth component={AddUserPage}></AdminAuth>
       </Layout>
     )
   },

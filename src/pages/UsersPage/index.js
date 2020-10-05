@@ -1,7 +1,12 @@
 import React from 'react';
+import UsersComponent from '../../components/UsersComponent';
 
 const UsersPage = () => {
-  return <div>Users Page</div>;
+  return (
+    <>
+      <UsersComponent />
+    </>
+  );
 };
 
 export default UsersPage;
