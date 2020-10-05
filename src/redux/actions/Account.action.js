@@ -17,8 +17,9 @@ export const signInAction = (data, loginSuccess) => async dispatch => {
             type: CREDENTIAL_TYPE.SIGNIN_SUCCESS,
             payload: data
           });
-          loginSuccess();
         }
+
+        loginSuccess();
       }
     })
     .catch(err => {

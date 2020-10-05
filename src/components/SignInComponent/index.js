@@ -29,8 +29,9 @@ const SignInComponent = () => {
   const history = useHistory();
   const { errStatus, errData } = useSelector(state => state.AccountReducer);
   const handleLoginSuccess = () => {
-    history.push('/admin');
-    setTimeout(() => {
+    const credential = JSON.parse(localStorage.getItem('credential'));
+    if (credential?.role === 'ADMIN') {
+      history.push('/admin');
       toast.success('🦄 HELLO ADMIN', {
         position: 'top-right',
         autoClose: 2000,
@@ -38,7 +39,15 @@ const SignInComponent = () => {
         closeOnClick: true,
         pauseOnHover: false
       });
-    }, 500);
+    } else {
+      toast.error('You are not an Administrator', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false
+      });
+    }
   };
 
   const renderErrorLoginFailure = () => {

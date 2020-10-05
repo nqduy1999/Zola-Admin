@@ -6,7 +6,7 @@ const UsersComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUsersAction());
-  }, []);
+  }, [dispatch]);
 
   return <div></div>;
 };

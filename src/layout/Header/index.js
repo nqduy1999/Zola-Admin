@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { classPrefixor } from '../../utils/classPrefixor';
 import { Row, Col, Input, Avatar, Dropdown, Menu } from 'antd';
-import { SearchOutlined, BellOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  BellOutlined,
+  LogoutOutlined
+} from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -23,6 +27,7 @@ const Header = props => {
   const menu = (
     <Menu>
       <Menu.Item key="0" onClick={() => handleLogout()}>
+        <LogoutOutlined style={{ fontSize: '15px', marginRight: '10px' }} />
         Log out
       </Menu.Item>
     </Menu>
@@ -43,7 +48,8 @@ const Header = props => {
               style={{ fontSize: '20px', color: '#08c', marginRight: '20px' }}
             />
             <Dropdown overlay={menu} trigger={['click']}>
-              <a
+              <p
+                href=""
                 className="ant-dropdown-link"
                 onClick={e => e.preventDefault()}
               >
@@ -53,9 +59,8 @@ const Header = props => {
                 >
                   {role}
                 </Avatar>
-              </a>
+              </p>
             </Dropdown>
-            ,
           </Col>
         </Row>
         <section className={c`content`}>{props.children}</section>
