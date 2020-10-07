@@ -28,3 +28,35 @@ export const fetchUsersAction = () => dispatch => {
       });
     });
 };
+
+export const addUserAction = user => dispatch => {
+  dispatch({
+    type: USERS_TYPE.ADD_USER_REQUEST
+  });
+
+  userService
+    .addUser(user)
+    .then(res => {
+      const { error, message } = res.data;
+      if (!error) {
+        dispatch({
+          type: USERS_TYPE.ADD_USER_SUCCESS,
+          payload: message
+        });
+      }
+    })
+    .catch(err => {
+      const { error, data } = err.response?.data;
+      dispatch({
+        type: USERS_TYPE.ADD_USER_FAILURE,
+        payload: {
+          error,
+          data
+        }
+      });
+    });
+};
+
+export const dispatchDefaultAction = () => ({
+  type: 'DEFAULT_ACTION'
+});

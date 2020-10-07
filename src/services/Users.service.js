@@ -6,5 +6,12 @@ class UsersService {
       url: '/users'
     });
   };
+  addUser = user => {
+    return axios.request({
+      method: 'POST',
+      url: '/users/add',
+      data: user
+    });
+  };
 }
 export default UsersService;

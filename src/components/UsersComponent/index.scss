@@ -23,4 +23,13 @@
     color: blue;
     transition: all 0.5s;
   }
+  .User__info {
+    display: flex;
+    align-items: center;
+    img {
+      width: 20px;
+      height: 100%;
+      display: block;
+    }
+  }
 }

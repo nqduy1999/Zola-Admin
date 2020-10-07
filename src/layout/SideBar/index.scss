@@ -1,5 +1,6 @@
 .sidebar {
   background-color: #001529;
+  height: auto;
   &__img {
     @include styleCenterItem;
     img {

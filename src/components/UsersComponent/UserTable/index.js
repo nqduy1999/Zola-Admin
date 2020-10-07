@@ -1,6 +1,6 @@
 import React from 'react';
-import { Table, Spin, Tag } from 'antd';
-import { EyeOutlined } from '@ant-design/icons';
+import { Table, Spin, Tag, Avatar } from 'antd';
+import { EyeOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 
 const UserTable = () => {
@@ -14,7 +14,17 @@ const UserTable = () => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      sorter: (a, b) => a.name.length - b.name.length
+      sorter: (a, b) => a.name.length - b.name.length,
+      render: (_, record) => (
+        <div className="User__info">
+          {record.avatar === null ? (
+            <Avatar icon={<UserOutlined />} />
+          ) : (
+            <img src={record.avatar} alt="avatar" />
+          )}
+          <span style={{ padding: '15px' }}>{record.name}</span>
+        </div>
+      )
     },
     {
       title: 'Role',
@@ -73,7 +83,10 @@ const UserTable = () => {
           pagination={{
             defaultPageSize: 5,
             showQuickJumper: true,
-            position: ['bottomCenter']
+            position: ['bottomCenter'],
+            pageSizeOptions: [5, 10],
+            responsive: true,
+            showSizeChanger: true
           }}
         />
       )}
