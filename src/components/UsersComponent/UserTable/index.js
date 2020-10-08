@@ -1,13 +1,19 @@
 import React from 'react';
 import { Table, Spin, Tag, Avatar } from 'antd';
 import { EyeOutlined, UserOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { detailUserAction } from '../../../redux/actions/Users.action';
+import { useHistory } from 'react-router-dom';
 
 const UserTable = () => {
+  const dispatch = useDispatch();
   const { users, loading } = useSelector(state => state.UsersReducer);
-
+  const history = useHistory();
   const handleDetail = item => {
-    console.log(item);
+    if (item.id) {
+      dispatch(detailUserAction(item.id));
+      history.push(`/admin/user/${item.id}`);
+    }
   };
   const columns = [
     {
@@ -34,10 +40,33 @@ const UserTable = () => {
     },
 
     {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+      render: (_, record) => (
+        <>
+          {record.email === null ? (
+            <span style={{ color: 'red' }}>User Sign Up with Phone</span>
+          ) : (
+            <span>{record.email}</span>
+          )}
+        </>
+      )
+    },
+
+    {
       title: 'Phone',
       dataIndex: 'phone',
       key: 'phone',
-      sorter: (a, b) => a.phone.length - b.phone.length
+      render: (_, record) => (
+        <>
+          {record.phone === '' ? (
+            <span style={{ color: 'red' }}>User Sign Up with Email</span>
+          ) : (
+            <span>{record.phone}</span>
+          )}
+        </>
+      )
     },
     {
       title: 'Active',
@@ -47,9 +76,9 @@ const UserTable = () => {
         return (
           <>
             {record.active ? (
-              <Tag color="green">Already Active</Tag>
+              <Tag color="green">Active</Tag>
             ) : (
-              <Tag color="red">Not Active</Tag>
+              <Tag color="red">Unactive</Tag>
             )}
           </>
         );

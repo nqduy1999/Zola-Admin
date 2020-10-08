@@ -3,7 +3,7 @@ class AccountService {
   accountSignIn = user => {
     return axios.request({
       method: 'POST',
-      url: '/accounts/signin/phone',
+      url: '/accounts/signin',
       data: user
     });
   };

@@ -6,6 +6,7 @@ import Layout from '../layout';
 import UsersPage from '../pages/UsersPage';
 import AddUserPage from '../pages/AddUserPage';
 import AdminAuth from '../components/common/HOC/Auth/AdminAuth';
+import UserDetail from '../pages/UserDetail';
 export const routes = [
   {
     path: '/',
@@ -32,7 +33,15 @@ export const routes = [
       </Layout>
     )
   },
-
+  {
+    path: '/admin/user/:id',
+    exact: true,
+    main: () => (
+      <Layout>
+        <AdminAuth component={UserDetail}></AdminAuth>
+      </Layout>
+    )
+  },
   {
     path: '',
     exact: false,

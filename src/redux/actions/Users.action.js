@@ -57,6 +57,62 @@ export const addUserAction = user => dispatch => {
     });
 };
 
+export const detailUserAction = id => dispatch => {
+  dispatch({
+    type: USERS_TYPE.DETAIL_USER_REQUEST
+  });
+
+  userService
+    .detailUser(id)
+    .then(res => {
+      const { error, data } = res.data;
+      if (!error) {
+        dispatch({
+          type: USERS_TYPE.DETAIL_USER_SUCCESS,
+          payload: data
+        });
+      }
+    })
+    .catch(err => {
+      const { error, data } = err.response?.data;
+      dispatch({
+        type: USERS_TYPE.DETAIL_USER_FAILURE,
+        payload: {
+          error,
+          data
+        }
+      });
+    });
+};
+
+export const updateUserAction = (id, user) => dispatch => {
+  dispatch({
+    type: USERS_TYPE.UPDATE_USER_REQUEST
+  });
+
+  userService
+    .updateUser(id, user)
+    .then(res => {
+      const { error, message } = res.data;
+      if (!error) {
+        dispatch({
+          type: USERS_TYPE.UPDATE_USER_SUCCESS,
+          payload: message
+        });
+      }
+    })
+    .catch(err => {
+      const { error, data } = err.response?.data;
+      dispatch({
+        type: USERS_TYPE.UPDATE_USER_FAILURE,
+        payload: {
+          error,
+          data
+        }
+      });
+    });
+};
+
 export const dispatchDefaultAction = () => ({
   type: 'DEFAULT_ACTION'
 });

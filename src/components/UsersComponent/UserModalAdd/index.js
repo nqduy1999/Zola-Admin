@@ -20,11 +20,12 @@ const layout = {
 const tailLayout = {
   wrapperCol: { span: 24 }
 };
+
 const UserModalAdd = ({ ...props }) => {
   const [form] = Form.useForm();
   const { showModal, handleCloseModalRoot } = props;
   const dispatch = useDispatch();
-  const { message } = useSelector(state => state.UsersReducer);
+  const { message, dataErr } = useSelector(state => state.UsersReducer);
 
   useEffect(() => {
     if (message.length > 0) {
@@ -32,10 +33,20 @@ const UserModalAdd = ({ ...props }) => {
         position: 'top-right',
         autoClose: 2000
       });
+      dispatch(fetchUsersAction());
+    } else {
+      if (dataErr) {
+        dataErr.map(item => {
+          toast.error(`${item.msg}`, {
+            position: 'top-right',
+            autoClose: 2000
+          });
+          return item;
+        });
+      }
     }
-    dispatch(fetchUsersAction());
     dispatch(dispatchDefaultAction());
-  }, [message, dispatch]);
+  }, [message, dispatch, dataErr]);
 
   const onFinish = values => {
     dispatch(addUserAction(values));
@@ -63,7 +74,7 @@ const UserModalAdd = ({ ...props }) => {
               { required: true, message: 'Please input your username!' },
               {
                 pattern: NAME_RGX,
-                message: 'UserName must be between 16 and 32 characters'
+                message: 'UserName must be between 6 and 32 characters'
               }
             ]}
           >
