@@ -4,7 +4,8 @@ const initialState = {
   credentials: '',
   role: '',
   errStatus: false,
-  errData: []
+  errData: [],
+  info: null
 };
 
 const AccountReducer = (state = initialState, action) => {
@@ -35,7 +36,62 @@ const AccountReducer = (state = initialState, action) => {
         errData: []
       };
     }
-
+    case CREDENTIAL_TYPE.GET_INFO_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case CREDENTIAL_TYPE.GET_INFO_SUCCESS: {
+      return {
+        ...state,
+        info: action.payload
+      };
+    }
+    case CREDENTIAL_TYPE.GET_INFO_FAILURE: {
+      const { error, data } = action.payload;
+      return {
+        ...state,
+        errData: data,
+        errStatus: error
+      };
+    }
+    case CREDENTIAL_TYPE.UPDATE_INFO_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case CREDENTIAL_TYPE.UPDATE_INFO_SUCCESS: {
+      return {
+        ...state,
+        info: action.payload
+      };
+    }
+    case CREDENTIAL_TYPE.UPDATE_INFO_FAILURE: {
+      const { error, data } = action.payload;
+      return {
+        ...state,
+        errData: data,
+        errStatus: error
+      };
+    }
+    case CREDENTIAL_TYPE.CHANGE_PASSWORD_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case CREDENTIAL_TYPE.CHANGE_PASSWORD_SUCCESS: {
+      return {
+        ...state
+      };
+    }
+    case CREDENTIAL_TYPE.CHANGE_PASSWORD_FAILURE: {
+      const { error, data } = action.payload;
+      return {
+        ...state,
+        errData: data,
+        errStatus: error
+      };
+    }
     default:
       return state;
   }
