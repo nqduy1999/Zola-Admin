@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { classPrefixor } from '../../utils/classPrefixor';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +45,7 @@ const UserDetailComponent = () => {
         });
       }
     }
-  }, [dispatch, id, form, user]);
+  }, []);
 
   useEffect(() => {
     if (message.length > 0) {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Modal, Button, Form, Input, Select } from 'antd';
 import { RGX } from '../../../core/validators';
@@ -46,7 +47,7 @@ const UserModalAdd = ({ ...props }) => {
       }
     }
     dispatch(dispatchDefaultAction());
-  }, [message, dispatch, dataErr]);
+  }, [message]);
 
   const onFinish = values => {
     dispatch(addUserAction(values));
