@@ -11,7 +11,7 @@ import {
 } from '../../../redux/actions/Users.action';
 
 const { Option } = Select;
-const { NAME_RGX, PHONE_NUMBER_RGX, PASSWORD_RGX } = RGX;
+const { PHONE_NUMBER_RGX, PASSWORD_RGX, NAME_RGX } = RGX;
 
 const layout = {
   labelCol: { span: 6 },
@@ -71,10 +71,15 @@ const UserModalAdd = ({ ...props }) => {
             label="Username"
             name="name"
             rules={[
-              { required: true, message: 'Please input your username!' },
+              { required: true, message: 'Please input your name!' },
+              {
+                max: 32,
+                min: 6,
+                message: 'UserName must be between 6 and 32 characters'
+              },
               {
                 pattern: NAME_RGX,
-                message: 'UserName must be between 6 and 32 characters'
+                message: 'The name must not have any special characters'
               }
             ]}
           >

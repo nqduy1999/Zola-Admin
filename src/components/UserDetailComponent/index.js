@@ -35,8 +35,16 @@ const UserDetailComponent = () => {
   useEffect(() => {
     if (id) {
       dispatch(detailUserAction(id));
+      if (Object.keys(user).length > 0) {
+        form.setFieldsValue({
+          email: user.email,
+          role: user.role,
+          name: user.name,
+          active: user.active
+        });
+      }
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, form, user]);
 
   useEffect(() => {
     if (message.length > 0) {
@@ -54,6 +62,12 @@ const UserDetailComponent = () => {
       dispatch(updateUserAction(id, values));
     }
   };
+
+  const handleCancel = () => {
+    history.push('/admin/users');
+    dispatch(dispatchDefaultAction());
+  };
+
   return (
     <>
       {Object.keys(user).length > 0 && (
@@ -91,19 +105,21 @@ const UserDetailComponent = () => {
                       label="Name"
                       name="name"
                       rules={[
+                        { required: true, message: 'Please input your name!' },
                         {
-                          required: true,
-                          message: 'Please input your password!'
+                          max: 32,
+                          min: 6,
+                          message:
+                            'UserName must be between 6 and 32 characters'
                         },
-
                         {
                           pattern: NAME_RGX,
                           message:
-                            'UserName must be between 6 and 32 characters'
+                            'The name must not have any special characters'
                         }
                       ]}
                     >
-                      <Input value={user.name} />
+                      <Input />
                     </Form.Item>
 
                     <Form.Item label="Email">
@@ -135,7 +151,7 @@ const UserDetailComponent = () => {
                       <Button
                         htmlType="button"
                         onClick={() => {
-                          history.push('/admin/users');
+                          handleCancel();
                         }}
                       >
                         Cancel

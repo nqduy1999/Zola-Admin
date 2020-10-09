@@ -51,7 +51,8 @@ const UsersReducer = (state = initialState, action) => {
         message: '',
         dataErr: null,
         loading: false,
-        errStatus: null
+        errStatus: null,
+        user: {}
       };
     }
 

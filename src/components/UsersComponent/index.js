@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchUsersAction } from '../../redux/actions/Users.action';
+import {
+  dispatchDefaultAction,
+  fetchUsersAction
+} from '../../redux/actions/Users.action';
 import { Col, Row, Button } from 'antd';
 import { classPrefixor } from '../../utils/classPrefixor';
 import { UserAddOutlined, FilterOutlined } from '@ant-design/icons';
@@ -15,6 +18,7 @@ const UsersComponent = () => {
   const [showModalAddUser, setShowModalAddUser] = useState(false);
   useEffect(() => {
     dispatch(fetchUsersAction());
+    dispatch(dispatchDefaultAction());
   }, [dispatch]);
 
   const renderUsersComponent = () => {
