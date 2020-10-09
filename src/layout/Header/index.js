@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { classPrefixor } from '../../utils/classPrefixor';
-import { Row, Col, Input, Avatar, Dropdown, Menu } from 'antd';
-import {
-  SearchOutlined,
-  BellOutlined,
-  LogoutOutlined,
-  UserOutlined
-} from '@ant-design/icons';
+import { Row, Col, Avatar, Dropdown, Menu } from 'antd';
+import { BellOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signOutAction } from '../../redux/actions/Account.action';
 
@@ -27,14 +22,9 @@ const Header = props => {
   };
   const menu = (
     <Menu>
-      <Menu.Item key="0">
-        <NavLink to="/admin/profile">
-          <UserOutlined style={{ fontSize: '15px', marginRight: '10px' }} />
-          Profile
-        </NavLink>
-      </Menu.Item>
+      <Menu.Item key="0"></Menu.Item>
       <Menu.Item key="1" onClick={() => handleLogout()}>
-        <LogoutOutlined style={{ fontSize: '15px', marginRight: '10px' }} />
+        <LogoutOutlined style={{ fontSize: '15px', padding: '10px 0' }} />
         Log out
       </Menu.Item>
     </Menu>
@@ -43,14 +33,7 @@ const Header = props => {
     <>
       <section className="right">
         <Row className={prefix}>
-          <Col span="4" className={c`left`}>
-            <Input
-              size="middle"
-              placeholder="Search"
-              prefix={<SearchOutlined />}
-            />
-          </Col>
-          <Col offset="14" span="6" className={c`right`}>
+          <Col offset="21" span="3" className={c`right`}>
             <BellOutlined
               style={{ fontSize: '20px', color: '#08c', marginRight: '20px' }}
             />

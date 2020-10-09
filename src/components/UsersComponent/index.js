@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -6,7 +7,7 @@ import {
 } from '../../redux/actions/Users.action';
 import { Col, Row, Button } from 'antd';
 import { classPrefixor } from '../../utils/classPrefixor';
-import { UserAddOutlined, FilterOutlined } from '@ant-design/icons';
+import { UserAddOutlined } from '@ant-design/icons';
 import UserTable from './UserTable';
 import UserModalAdd from './UserModalAdd';
 
@@ -19,7 +20,7 @@ const UsersComponent = () => {
   useEffect(() => {
     dispatch(fetchUsersAction());
     dispatch(dispatchDefaultAction());
-  }, [dispatch]);
+  }, []);
 
   const renderUsersComponent = () => {
     const handleCloseModal = bool => {
@@ -30,20 +31,13 @@ const UsersComponent = () => {
         <section className={prefix}>
           <nav className={c`header`}>
             <Row>
-              <Col span="4">
-                <span className={c`header__text`}>User List</span>
-              </Col>
-              <Col span="5" offset="15" style={{ textAlign: 'right' }}>
+              <Col offset="22" span="2">
                 <Button
                   type="primary"
                   onClick={() => setShowModalAddUser(true)}
                 >
                   <UserAddOutlined />
                   Add User
-                </Button>
-                <Button type="primary">
-                  <FilterOutlined />
-                  Filter
                 </Button>
               </Col>
             </Row>

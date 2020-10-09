@@ -69,7 +69,7 @@ const UserModalAdd = ({ ...props }) => {
           form={form}
         >
           <Form.Item
-            label="Username"
+            label="Name"
             name="name"
             rules={[
               { required: true, message: 'Please input your name!' },

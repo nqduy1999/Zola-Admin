@@ -24,7 +24,7 @@ const formItemLayout = {
   wrapperCol: { span: 22 }
 };
 const tailLayout = {
-  wrapperCol: { offset: 20, span: 4 }
+  wrapperCol: { offset: 19, span: 5 }
 };
 
 const UserDetailComponent = () => {
@@ -53,10 +53,10 @@ const UserDetailComponent = () => {
         position: 'top-right',
         autoClose: 2000
       });
+      dispatch(detailUserAction(id));
     }
-    dispatch(detailUserAction(id));
     dispatch(dispatchDefaultAction());
-  }, [message, dispatch, id]);
+  }, [message]);
 
   const onFinish = values => {
     if (id) {
@@ -74,7 +74,7 @@ const UserDetailComponent = () => {
       {Object.keys(user).length > 0 && (
         <section className={prefix}>
           <Row>
-            <Col span="16" className={c`infoUser`}>
+            <Col span="18" className={c`infoUser`}>
               <h1>
                 Detail User: <span style={{ color: 'red' }}>{user.name}</span>
               </h1>
@@ -132,17 +132,13 @@ const UserDetailComponent = () => {
                     </Form.Item>
 
                     <Form.Item name="active" label="Active">
-                      <Radio.Group defaultValue={user.active}>
+                      <Radio.Group>
                         <Radio value={true}>Active</Radio>
                         <Radio value={false}>Unactive</Radio>
                       </Radio.Group>
                     </Form.Item>
 
-                    <Form.Item
-                      name="role"
-                      label="Role"
-                      initialValue={user.role}
-                    >
+                    <Form.Item name="role" label="Role">
                       <Select>
                         <Option value="MEMBER">MEMBER</Option>
                         <Option value="ADMIN">ADMIN</Option>

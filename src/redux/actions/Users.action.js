@@ -61,6 +61,7 @@ export const detailUserAction = id => dispatch => {
   dispatch({
     type: USERS_TYPE.DETAIL_USER_REQUEST
   });
+  console.log(id);
 
   userService
     .detailUser(id)

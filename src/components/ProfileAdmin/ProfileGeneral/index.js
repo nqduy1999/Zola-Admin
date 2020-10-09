@@ -135,6 +135,7 @@ const ProfileGeneral = props => {
               src={adminProfile?.avatar ? adminProfile?.avatar : 'avatar'}
               className="img_avatar"
               data-reactid="23"
+              alt="avatar"
             />
             <Button className="change_image" onClick={showModal}>
               Change
