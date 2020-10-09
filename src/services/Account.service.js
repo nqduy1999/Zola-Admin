@@ -7,6 +7,26 @@ class AccountService {
       data: user
     });
   };
+  getInfoAdmin = value => {
+    return axios.request({
+      method: 'GET',
+      url: `/users/detail?phone=${value}`
+    });
+  };
+  updateInfoAdmin = data => {
+    return axios.request({
+      method: 'PUT',
+      url: `/users/profile/update`,
+      data
+    });
+  };
+  changePassword = data => {
+    return axios.request({
+      method: 'POST',
+      url: `accounts/passwords/change`,
+      data
+    });
+  };
 }
 
 export default AccountService;

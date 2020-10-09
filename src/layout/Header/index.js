@@ -5,10 +5,11 @@ import { Row, Col, Input, Avatar, Dropdown, Menu } from 'antd';
 import {
   SearchOutlined,
   BellOutlined,
-  LogoutOutlined
+  LogoutOutlined,
+  UserOutlined
 } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signOutAction } from '../../redux/actions/Account.action';
 
@@ -26,7 +27,13 @@ const Header = props => {
   };
   const menu = (
     <Menu>
-      <Menu.Item key="0" onClick={() => handleLogout()}>
+      <Menu.Item key="0">
+        <NavLink to="/admin/profile">
+          <UserOutlined style={{ fontSize: '15px', marginRight: '10px' }} />
+          Profile
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key="1" onClick={() => handleLogout()}>
         <LogoutOutlined style={{ fontSize: '15px', marginRight: '10px' }} />
         Log out
       </Menu.Item>
