@@ -57,7 +57,8 @@ const ProfileGeneral = props => {
   const submit = () => {
     const dataUpdate = {
       name: adminProfile?.name,
-      avatar: adminProfile?.avatar
+      avatar: adminProfile?.avatar,
+      role: 'ADMIN'
     };
     dispatch(updateInfoAdmin(dataUpdate)).then(() => {
       setChangeName(false);
@@ -81,7 +82,8 @@ const ProfileGeneral = props => {
         console.log(res);
         const dataUpdate = {
           name: adminProfile?.name || '',
-          avatar: `https://api-ret.ml/api/v0/images/download/${res.data}`
+          avatar: `https://api-ret.ml/api/v0/images/download/${res.data}`,
+          role: 'ADMIN'
         };
         dispatch(updateInfoAdmin(dataUpdate)).then(() => {
           setVisible(false);

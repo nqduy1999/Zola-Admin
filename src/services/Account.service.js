@@ -16,7 +16,7 @@ class AccountService {
   updateInfoAdmin = data => {
     return axios.request({
       method: 'PUT',
-      url: `/users/profile/update`,
+      url: `/users/update?id=${JSON.parse(localStorage.getItem('id'))}`,
       data
     });
   };

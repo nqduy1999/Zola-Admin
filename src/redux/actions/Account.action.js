@@ -40,7 +40,6 @@ export const signOutAction = () => ({
   type: CREDENTIAL_TYPE.SIGNOUT_SUCCESS
 });
 export const getInfoAdmin = value => async dispatch => {
-  console.log(value);
   dispatch({
     type: CREDENTIAL_TYPE.GET_INFO_REQUEST
   });
@@ -50,6 +49,7 @@ export const getInfoAdmin = value => async dispatch => {
       console.log(res);
       const { error, data } = res.data;
       if (!error) {
+        localStorage.setItem('id', JSON.stringify(data.id));
         dispatch({
           type: CREDENTIAL_TYPE.GET_INFO_SUCCESS,
           payload: data
