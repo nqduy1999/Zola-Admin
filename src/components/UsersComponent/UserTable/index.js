@@ -139,6 +139,8 @@ const UserTable = () => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      fixed: 'left',
+
       sorter: (a, b) => a.name.length - b.name.length,
       render: (_, record) => (
         <div className="User__info">
@@ -237,10 +239,7 @@ const UserTable = () => {
             okText="Yes"
             cancelText="No"
           >
-            <DeleteOutlined
-              className="icon del"
-              // onClick={() => handleDelete(record.id)}
-            />
+            <DeleteOutlined className="icon del" />
           </Popconfirm>
           ,
         </>
@@ -255,6 +254,7 @@ const UserTable = () => {
       size="large"
       tableLayout="fixed"
       onChange={handleChange}
+      scroll={{ x: 1300 }}
       pagination={{
         defaultPageSize: 5,
         showQuickJumper: true,
