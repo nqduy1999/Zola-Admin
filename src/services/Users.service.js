@@ -26,5 +26,11 @@ class UsersService {
       data: user
     });
   };
+  deleteUser = id => {
+    return axios.request({
+      method: 'DELETE',
+      url: `/users/delete?id=${id}`
+    });
+  };
 }
 export default UsersService;

@@ -61,8 +61,6 @@ export const detailUserAction = id => dispatch => {
   dispatch({
     type: USERS_TYPE.DETAIL_USER_REQUEST
   });
-  console.log(id);
-
   userService
     .detailUser(id)
     .then(res => {
@@ -106,6 +104,34 @@ export const updateUserAction = (id, user) => dispatch => {
       const { error, data } = err.response?.data;
       dispatch({
         type: USERS_TYPE.UPDATE_USER_FAILURE,
+        payload: {
+          error,
+          data
+        }
+      });
+    });
+};
+
+export const deleteUserAction = id => dispatch => {
+  dispatch({
+    type: USERS_TYPE.DELETE_USER_REQUEST
+  });
+
+  userService
+    .deleteUser(id)
+    .then(res => {
+      const { error, message } = res.data;
+      if (!error) {
+        dispatch({
+          type: USERS_TYPE.DELETE_USER_SUCCESS,
+          payload: message
+        });
+      }
+    })
+    .catch(err => {
+      const { error, data } = err.response?.data;
+      dispatch({
+        type: USERS_TYPE.DELETE_USER_FAILURE,
         payload: {
           error,
           data

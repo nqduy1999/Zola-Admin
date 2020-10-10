@@ -1,17 +1,62 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Table, Tag, Avatar, Button, Space, Input } from 'antd';
-import { EyeOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import {
+  Table,
+  Tag,
+  Avatar,
+  Button,
+  Space,
+  Input,
+  Popconfirm,
+  message
+} from 'antd';
+import {
+  EyeOutlined,
+  SearchOutlined,
+  UserOutlined,
+  DeleteOutlined
+} from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {
+  deleteUserAction,
+  dispatchDefaultAction,
+  fetchUsersAction
+} from '../../../redux/actions/Users.action';
+import { toast } from 'react-toastify';
 
 const UserTable = () => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
-  const { users } = useSelector(state => state.UsersReducer);
+  const { users, messageDelete, dataErrDelete } = useSelector(
+    state => state.UsersReducer
+  );
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (messageDelete.length > 0) {
+      toast.success(`${messageDelete}`, {
+        position: 'top-right',
+        autoClose: 2000
+      });
+      dispatch(fetchUsersAction());
+    } else {
+      if (dataErrDelete) {
+        dataErrDelete.map(item => {
+          toast.error(`${item.msg}`, {
+            position: 'top-right',
+            autoClose: 2000
+          });
+          return item;
+        });
+      }
+    }
+    dispatch(dispatchDefaultAction());
+  }, [messageDelete, dataErrDelete]);
 
   const handleDetail = id => {
     if (id) history.push(`/admin/user/${id}`);
@@ -30,6 +75,14 @@ const UserTable = () => {
   const handleReset = clearFilters => {
     clearFilters();
     setSearchText('');
+  };
+
+  const confirm = id => {
+    if (id) dispatch(deleteUserAction(id));
+  };
+
+  const cancel = e => {
+    message.error('You dont want delete this user!');
   };
 
   const getColumnSearchProps = dataIndex => ({
@@ -90,7 +143,7 @@ const UserTable = () => {
       render: (_, record) => (
         <div className="User__info">
           {record.avatar === null ? (
-            <Avatar icon={<UserOutlined />} />
+            <Avatar icon={<UserOutlined />} size="large" />
           ) : (
             <img src={record.avatar} alt="avatar" />
           )}
@@ -177,6 +230,19 @@ const UserTable = () => {
             className="icon detail"
             onClick={() => handleDetail(record.id)}
           />
+          <Popconfirm
+            title="Are you sure delete this user?"
+            onConfirm={() => confirm(record.id)}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+          >
+            <DeleteOutlined
+              className="icon del"
+              // onClick={() => handleDelete(record.id)}
+            />
+          </Popconfirm>
+          ,
         </>
       )
     }

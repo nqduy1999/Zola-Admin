@@ -3,9 +3,11 @@ const { USERS_TYPE } = require('../constants/Users.contant');
 const initialState = {
   users: [],
   user: {},
-  errStatus: null,
   message: '',
+  messageDelete: '',
   dataErr: null,
+  dataErrDelete: null,
+  errStatus: null,
   loading: false
 };
 
@@ -45,11 +47,23 @@ const UsersReducer = (state = initialState, action) => {
       return { ...state, message: action.payload };
     }
 
+    //DELETE USER
+    case USERS_TYPE.DELETE_USER_SUCCESS: {
+      return { ...state, messageDelete: action.payload };
+    }
+
+    case USERS_TYPE.DELETE_USER_FAILURE: {
+      const { error, data } = action.payload;
+      return { ...state, errStatus: error, dataErrDelete: data };
+    }
+
     case 'DEFAULT_ACTION': {
       return {
         ...state,
         message: '',
+        messageDelete: '',
         dataErr: null,
+        dataErrDelete: null,
         loading: false,
         errStatus: null,
         user: {}

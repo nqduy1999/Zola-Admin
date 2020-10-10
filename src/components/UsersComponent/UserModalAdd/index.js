@@ -47,7 +47,7 @@ const UserModalAdd = ({ ...props }) => {
       }
     }
     dispatch(dispatchDefaultAction());
-  }, [message]);
+  }, [message, dataErr]);
 
   const onFinish = values => {
     dispatch(addUserAction(values));

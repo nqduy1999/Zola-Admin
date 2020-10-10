@@ -14,12 +14,17 @@
     color: blue;
     transition: all 0.5s;
   }
+  .del:hover {
+    color: red;
+    transition: all 0.5s;
+  }
   .User__info {
     display: flex;
     align-items: center;
     img {
-      width: 20px;
-      height: 100%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       display: block;
     }
   }
