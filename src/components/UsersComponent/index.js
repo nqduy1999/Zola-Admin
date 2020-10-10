@@ -31,7 +31,7 @@ const UsersComponent = () => {
         <section className={prefix}>
           <nav className={c`header`}>
             <Row>
-              <Col offset="22" span="2">
+              <Col lg={{ span: 2, offset: 22 }}>
                 <Button
                   type="primary"
                   onClick={() => setShowModalAddUser(true)}

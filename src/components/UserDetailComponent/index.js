@@ -23,9 +23,6 @@ const formItemLayout = {
   labelCol: { span: 2 },
   wrapperCol: { span: 22 }
 };
-const tailLayout = {
-  wrapperCol: { offset: 19, span: 5 }
-};
 
 const UserDetailComponent = () => {
   const history = useHistory();
@@ -74,12 +71,12 @@ const UserDetailComponent = () => {
       {Object.keys(user).length > 0 && (
         <section className={prefix}>
           <Row>
-            <Col span="18" className={c`infoUser`}>
+            <Col lg={{ span: 24 }} className={c`infoUser`}>
               <h1>
                 Detail User: <span style={{ color: 'red' }}>{user.name}</span>
               </h1>
               <Row>
-                <Col span="5" offset="9">
+                <Col lg={{ span: 4, offset: 9 }}>
                   <div className={c`avatar`}>
                     {user.avatar === null ? (
                       <img src={Avatar} alt="avatar" />
@@ -144,7 +141,7 @@ const UserDetailComponent = () => {
                         <Option value="ADMIN">ADMIN</Option>
                       </Select>
                     </Form.Item>
-                    <Form.Item {...tailLayout}>
+                    <Form.Item className="btn">
                       <Button
                         htmlType="button"
                         onClick={() => {

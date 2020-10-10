@@ -6,22 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signInAction } from '../../redux/actions/Account.action';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
 
 const prefix = 'signIn';
 const c = classPrefixor(prefix);
 
 const layout = {
-  labelCol: {
-    span: 8
-  },
   wrapperCol: {
-    span: 14
-  }
-};
-const tailLayout = {
-  wrapperCol: {
-    span: 14,
-    offset: 8
+    span: 24
   }
 };
 const SignInComponent = () => {
@@ -65,13 +57,13 @@ const SignInComponent = () => {
   return (
     <section className={prefix}>
       <Row className={c`form`}>
-        <Col span="10" className={c`form__left`}>
+        <Col lg={{ span: 10 }} className={c`form__left`}>
           <img src={logo} alt="logo" />
         </Col>
-        <Col span="14" className={c`form__right`}>
+        <Col lg={{ span: 14 }} className={c`form__right`}>
           <div className={c`form__right__content`}>
             <Row>
-              <Col span="24" className="img">
+              <Col lg={{ span: 24 }} className="img">
                 <img src={logo} alt="logo" />
               </Col>
             </Row>
@@ -80,7 +72,6 @@ const SignInComponent = () => {
                 <Form {...layout} name="basic" onFinish={onFinish}>
                   {errStatus && renderErrorLoginFailure()}
                   <Form.Item
-                    label="Your Phone Number"
                     name="phone"
                     rules={[
                       {
@@ -89,11 +80,13 @@ const SignInComponent = () => {
                       }
                     ]}
                   >
-                    <Input />
+                    <Input
+                      placeholder="Your Phone Number"
+                      prefix={<PhoneOutlined className="site-form-item-icon" />}
+                    />
                   </Form.Item>
 
                   <Form.Item
-                    label="Password"
                     name="password"
                     rules={[
                       {
@@ -102,11 +95,18 @@ const SignInComponent = () => {
                       }
                     ]}
                   >
-                    <Input.Password />
+                    <Input.Password
+                      placeholder="Password"
+                      prefix={<LockOutlined className="site-form-item-icon" />}
+                    />
                   </Form.Item>
 
-                  <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit">
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{ textAlign: 'center' }}
+                    >
                       Submit
                     </Button>
                   </Form.Item>

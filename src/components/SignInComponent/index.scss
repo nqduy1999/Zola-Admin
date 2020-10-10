@@ -29,13 +29,6 @@
         form {
           width: 100%;
           margin-top: 20px;
-          label {
-            @include styleText(
-              $color-white-0,
-              $default-fontsize,
-              $default-fontWeight
-            );
-          }
           button {
             width: 100%;
           }
@@ -48,10 +41,25 @@
         .img {
           @include styleCenterItem;
           padding: 15px 0 0;
-          margin-left: 8%;
           img {
             width: 30%;
           }
+        }
+      }
+    }
+    input {
+      padding: 3px !important;
+    }
+  }
+}
+@media only screen and (max-width: 991px) {
+  .signIn {
+    text-align: center;
+    &__form {
+      @include styleCenTerMargin(90%);
+      &__left {
+        img {
+          display: none;
         }
       }
     }

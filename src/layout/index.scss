@@ -1,6 +1,16 @@
 .layoutApp {
   display: flex;
-  flex-direction: row;
   height: 150vh;
   width: 100%;
+  .left {
+    background-color: #001529;
+    width: 100%;
+    ul {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .right {
+    width: 100%;
+  }
 }
