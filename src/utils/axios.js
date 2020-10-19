@@ -1,6 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
-  baseURL: 'https://api-chat.ga/api/v0'
+  baseURL: 'https://api-ret.ml/api/v0'
 });
 
 instance.interceptors.request.use(
