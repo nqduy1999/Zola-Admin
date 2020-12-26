@@ -9,8 +9,8 @@ export const fetchUsersAction = () => dispatch => {
   userService
     .fetchUsers()
     .then(res => {
-      const { error, data } = res.data;
-      if (!error) {
+      const { status, data } = res;
+      if (status === 200) {
         dispatch({
           type: USERS_TYPE.FETCH_LIST_SUCCESS,
           payload: data
@@ -18,11 +18,11 @@ export const fetchUsersAction = () => dispatch => {
       }
     })
     .catch(err => {
-      const { error, data } = err.response?.data;
+      const { status, data } = err?.response;
       dispatch({
         type: USERS_TYPE.FETCH_LIST_REQUEST_FAILURE,
         payload: {
-          error,
+          status,
           data
         }
       });
@@ -37,20 +37,20 @@ export const addUserAction = user => dispatch => {
   userService
     .addUser(user)
     .then(res => {
-      const { error, message } = res.data;
-      if (!error) {
+      const { status, data } = res;
+      if (status === 201) {
         dispatch({
           type: USERS_TYPE.ADD_USER_SUCCESS,
-          payload: message
+          payload: data
         });
       }
     })
     .catch(err => {
-      const { error, data } = err.response?.data;
+      const { status, data } = err?.response;
       dispatch({
         type: USERS_TYPE.ADD_USER_FAILURE,
         payload: {
-          error,
+          status,
           data
         }
       });
@@ -64,8 +64,8 @@ export const detailUserAction = id => dispatch => {
   userService
     .detailUser(id)
     .then(res => {
-      const { error, data } = res.data;
-      if (!error) {
+      const { status, data } = res;
+      if (status === 200) {
         dispatch({
           type: USERS_TYPE.DETAIL_USER_SUCCESS,
           payload: data
@@ -73,11 +73,11 @@ export const detailUserAction = id => dispatch => {
       }
     })
     .catch(err => {
-      const { error, data } = err.response?.data;
+      const { status, data } = err?.response;
       dispatch({
         type: USERS_TYPE.DETAIL_USER_FAILURE,
         payload: {
-          error,
+          status,
           data
         }
       });
@@ -92,20 +92,20 @@ export const updateUserAction = (id, user) => dispatch => {
   userService
     .updateUser(id, user)
     .then(res => {
-      const { error, message } = res.data;
-      if (!error) {
+      const { status, data } = res;
+      if (status) {
         dispatch({
           type: USERS_TYPE.UPDATE_USER_SUCCESS,
-          payload: message
+          payload: data
         });
       }
     })
     .catch(err => {
-      const { error, data } = err.response?.data;
+      const { status, data } = err?.response;
       dispatch({
         type: USERS_TYPE.UPDATE_USER_FAILURE,
         payload: {
-          error,
+          status,
           data
         }
       });
@@ -120,20 +120,20 @@ export const deleteUserAction = id => dispatch => {
   userService
     .deleteUser(id)
     .then(res => {
-      const { error, message } = res.data;
-      if (!error) {
+      const { status, data } = res;
+      if (status) {
         dispatch({
           type: USERS_TYPE.DELETE_USER_SUCCESS,
-          payload: message
+          payload: data
         });
       }
     })
     .catch(err => {
-      const { error, data } = err.response?.data;
+      const { status, data } = err?.response;
       dispatch({
         type: USERS_TYPE.DELETE_USER_FAILURE,
         payload: {
-          error,
+          status,
           data
         }
       });

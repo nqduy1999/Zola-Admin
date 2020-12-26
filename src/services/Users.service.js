@@ -9,7 +9,7 @@ class UsersService {
   addUser = user => {
     return axios.request({
       method: 'POST',
-      url: '/users/add',
+      url: '/users',
       data: user
     });
   };
@@ -22,14 +22,14 @@ class UsersService {
   updateUser = (id, user) => {
     return axios.request({
       method: 'PUT',
-      url: `/users/update?id=${id}`,
+      url: `/users/${id}`,
       data: user
     });
   };
   deleteUser = id => {
     return axios.request({
       method: 'DELETE',
-      url: `/users/delete?id=${id}`
+      url: `/users/${id}`
     });
   };
 }

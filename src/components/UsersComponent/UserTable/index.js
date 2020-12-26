@@ -241,7 +241,6 @@ const UserTable = () => {
           >
             <DeleteOutlined className="icon del" />
           </Popconfirm>
-          ,
         </>
       )
     }

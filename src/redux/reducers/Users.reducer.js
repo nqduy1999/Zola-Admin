@@ -22,15 +22,14 @@ const UsersReducer = (state = initialState, action) => {
     }
 
     //CREATE USER
-
     case USERS_TYPE.ADD_USER_SUCCESS: {
-      return { ...state, message: action.payload };
+      const { message } = action.payload;
+      return { ...state, message };
     }
 
     case USERS_TYPE.ADD_USER_FAILURE: {
-      const { error, data } = action.payload;
-      console.log(data);
-      return { ...state, errStatus: error, dataErr: data };
+      const { status, data } = action.payload;
+      return { ...state, errStatus: status, dataErr: data };
     }
 
     //USER DETAIL
@@ -44,17 +43,19 @@ const UsersReducer = (state = initialState, action) => {
 
     //UPDATE USER
     case USERS_TYPE.UPDATE_USER_SUCCESS: {
-      return { ...state, message: action.payload };
+      const { message } = action.payload;
+      return { ...state, message: message };
     }
 
     //DELETE USER
     case USERS_TYPE.DELETE_USER_SUCCESS: {
-      return { ...state, messageDelete: action.payload };
+      const { message } = action.payload;
+      return { ...state, messageDelete: message };
     }
 
     case USERS_TYPE.DELETE_USER_FAILURE: {
-      const { error, data } = action.payload;
-      return { ...state, errStatus: error, dataErrDelete: data };
+      const { status, data } = action.payload;
+      return { ...state, errStatus: status, dataErrDelete: data };
     }
 
     case 'DEFAULT_ACTION': {

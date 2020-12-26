@@ -6,7 +6,6 @@ import Layout from '../layout';
 import UsersPage from '../pages/UsersPage';
 import AddUserPage from '../pages/AddUserPage';
 import AdminAuth from '../components/common/HOC/Auth/AdminAuth';
-import ProfileAdmin from '../pages/Profile/ProfileAdmin';
 import UserDetail from '../pages/UserDetail';
 export const routes = [
   {
@@ -14,15 +13,7 @@ export const routes = [
     exact: true,
     main: () => <SignInPage />
   },
-  {
-    path: '/admin/profile',
-    exact: true,
-    main: () => (
-      <Layout>
-        <AdminAuth component={ProfileAdmin}></AdminAuth>
-      </Layout>
-    )
-  },
+
   {
     path: '/admin/users',
     exact: true,

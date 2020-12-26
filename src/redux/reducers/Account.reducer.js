@@ -23,8 +23,8 @@ const AccountReducer = (state = initialState, action) => {
       };
     }
     case CREDENTIAL_TYPE.SIGNIN_FAILURE: {
-      const { error, data } = action.payload;
-      return { ...state, errData: data, errStatus: error };
+      const { status, data } = action.payload;
+      return { ...state, errData: data, errStatus: status };
     }
 
     case CREDENTIAL_TYPE.SIGNOUT_SUCCESS: {
